@@ -1,0 +1,490 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap');
+
+/* ==========================================
+   GLOBAL MODERN DARK THEME STYLES (SCREEN)
+   ========================================== */
+:root {
+  --bg-dark: #0b0f19;
+  --bg-card: #111827;
+  --bg-hover: #1f2937;
+  --border-color: #1f2937;
+  --accent-cyan: #06b6d4;
+  --accent-blue: #3b82f6;
+  --accent-green: #10b981;
+  --accent-red: #ef4444;
+  --text-main: #f9fafb;
+  --text-muted: #9ca3af;
+  --font-main: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  font-family: var(--font-main);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Glassmorphism Card Container */
+.glass-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4);
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.glass-card:hover {
+  border-color: #374151;
+}
+
+/* Input Fields & Form Controls */
+.modern-input {
+  background-color: #0d1322;
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-family: var(--font-main);
+  font-size: 0.9rem;
+  outline: none;
+  transition: all 0.2s ease;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.modern-input:focus {
+  border-color: var(--accent-cyan);
+  box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.15);
+}
+
+/* Modern Minimalist Buttons */
+.btn-primary {
+  background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s ease, transform 0.1s ease;
+}
+
+.btn-primary:hover {
+  opacity: 0.92;
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  background-color: #1f2937;
+  color: var(--text-main);
+  border: 1px solid #374151;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.btn-secondary:hover {
+  background-color: #374151;
+}
+
+.customer-business-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  color: #cbd5e1;
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.customer-business-button:hover,
+.customer-business-button[aria-expanded='true'] {
+  background-color: rgba(6, 182, 212, 0.12);
+  border-color: rgba(6, 182, 212, 0.45);
+  color: var(--accent-cyan);
+}
+
+.customer-business-chevron {
+  display: inline-block;
+  font-size: 0.95rem;
+  line-height: 0.7;
+  transition: transform 0.2s ease;
+}
+
+.customer-business-button[aria-expanded='true'] .customer-business-chevron {
+  transform: rotate(180deg);
+}
+
+.customer-business-cell {
+  padding: 0 16px 16px;
+  background-color: rgba(13, 19, 34, 0.55);
+}
+
+.customer-business-panel {
+  animation: customer-business-reveal 0.22s ease-out both;
+  transform-origin: top center;
+}
+
+@keyframes customer-business-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.invoice-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.invoice-toolbar-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  flex-wrap: nowrap;
+  min-width: 0;
+}
+
+.invoice-payment-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+}
+
+.invoice-toolbar-label {
+  color: #9ca3af;
+  font-size: 0.78rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.invoice-toolbar-button {
+  padding: 7px 11px;
+  border-radius: 6px;
+  font-size: 0.78rem;
+  white-space: nowrap;
+}
+
+.invoice-status-select {
+  width: auto;
+  min-width: 92px;
+  padding: 7px 9px;
+  border-radius: 6px;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.invoice-payment-input {
+  width: 100px;
+  padding: 7px 8px;
+  border-radius: 6px;
+  font-size: 0.78rem;
+}
+
+.invoice-delete-button {
+  background-color: rgba(239, 68, 68, 0.15);
+  color: #ef4444;
+  border-color: rgba(239, 68, 68, 0.3);
+}
+
+@media (max-width: 700px) {
+  .invoice-toolbar {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .invoice-toolbar-actions {
+    justify-content: flex-start;
+    width: 100%;
+    flex-wrap: wrap;
+  }
+
+  .invoice-payment-controls {
+    flex-wrap: wrap;
+  }
+}
+
+.dashboard-header {
+  gap: 24px;
+}
+
+.dashboard-header-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.dashboard-report-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 6px 4px 10px;
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  background: rgba(13, 19, 34, 0.72);
+}
+
+.dashboard-report-label {
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.dashboard-month-input {
+  width: 142px;
+  padding: 8px 10px;
+  font-size: 0.82rem;
+}
+
+.dashboard-export-button,
+.dashboard-settings-button,
+.dashboard-invoice-button {
+  white-space: nowrap;
+}
+
+.dashboard-export-button {
+  padding: 8px 12px;
+  font-size: 0.82rem;
+}
+
+@media (max-width: 980px) {
+  .dashboard-header {
+    align-items: flex-start !important;
+    flex-direction: column;
+  }
+
+  .dashboard-header-actions {
+    width: 100%;
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 560px) {
+  .dashboard-header {
+    padding: 14px 18px !important;
+  }
+
+  .dashboard-header-actions,
+  .dashboard-report-controls {
+    width: 100%;
+  }
+
+  .dashboard-report-controls {
+    box-sizing: border-box;
+    justify-content: space-between;
+  }
+
+  .dashboard-month-input {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .dashboard-export-button,
+  .dashboard-settings-button,
+  .dashboard-invoice-button {
+    flex: 1;
+  }
+}
+
+/* Data Table Styling */
+.modern-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin-top: 10px;
+}
+
+.modern-table th {
+  background-color: #1a2234;
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 12px 16px;
+  text-align: left;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.modern-table td {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border-color);
+  font-size: 0.9rem;
+}
+
+.modern-table tr:last-child td {
+  border-bottom: none;
+}
+
+.modern-table tr:hover td {
+  background-color: rgba(31, 41, 55, 0.4);
+}
+
+.mono-text {
+  font-family: var(--font-mono);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-dark);
+}
+::-webkit-scrollbar-thumb {
+  background: #1f2937;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #374151;
+}
+
+/* ==========================================
+   PRINT INTERCEPT STYLESHEET (@media print)
+   ========================================== */
+@media print {
+  /* 1. Page margin and dimensions */
+  @page {
+    size: A4 portrait;
+    margin: 8mm 10mm; /* Reduced top margin to utilize maximum vertical space */
+  }
+
+  /* 2. Hide all non-printable UI overlays */
+  body * {
+    visibility: hidden;
+  }
+
+  /* 3. Reset background colors and layout constraints */
+  html, body {
+    background: #ffffff !important;
+    color: #000000 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    height: auto !important;
+    display: block !important; /* Prevents flexbox/grid screen centering from affecting print */
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  /* 4. Force printable target element to align directly at the top */
+  #printable-invoice, #printable-invoice * {
+    visibility: visible;
+  }
+
+  #printable-invoice {
+    position: absolute !important;
+    left: 0 !important;
+    top: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background-color: #ffffff !important;
+    color: #000000 !important;
+    box-shadow: none !important;
+    border: none !important;
+  }
+
+  /* 5. Clean up print layout elements and anchor header to top */
+  .print-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-bottom: 2px solid #000000;
+    padding-bottom: 12px;
+    margin-top: 0 !important;
+    margin-bottom: 20px;
+    width: 100%;
+  }
+
+  .print-logo-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .print-logo {
+    width: 65px;
+    height: 65px;
+    object-fit: contain;
+  }
+
+  .print-company-title h1 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #000000;
+  }
+
+  .print-company-title p {
+    margin: 2px 0 0 0;
+    font-size: 0.85rem;
+    color: #444444;
+  }
+
+  .print-meta-box {
+    text-align: right;
+    font-size: 0.85rem;
+    line-height: 1.4;
+  }
+
+  .print-grid {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    font-size: 0.85rem;
+    width: 100%;
+  }
+
+  .print-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+
+  .print-table th {
+    background-color: #f3f4f6 !important;
+    color: #000000 !important;
+    border: 1px solid #d1d5db;
+    padding: 8px 12px;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+  }
+
+  .print-table td {
+    border: 1px solid #d1d5db;
+    padding: 8px 12px;
+    font-size: 0.85rem;
+    color: #000000 !important;
+  }
+
+  .print-footer {
+    margin-top: 40px;
+    border-top: 1px dashed #9ca3af;
+    padding-top: 15px;
+    font-size: 0.75rem;
+    text-align: center;
+    color: #4b5563;
+  }
+}

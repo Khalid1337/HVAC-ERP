@@ -1,0 +1,1 @@
+Move the hvac-erp-backup.tar.gz file to your destination Linux system, extract it using tar -xzvf hvac-erp-backup.tar.gz, run npm install, and start your services to pick up exactly where you left off.
