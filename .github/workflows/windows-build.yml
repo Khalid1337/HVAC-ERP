@@ -1,0 +1,34 @@
+name: Build Windows Installer
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-windows:
+    runs-on: windows-latest
+
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build Windows installer
+        run: npm run build:windows
+
+      - name: Upload Windows installer
+        uses: actions/upload-artifact@v4
+        with:
+          name: hvac-erp-windows-installer
+          path: release/HVAC ERP Setup 1.0.0.exe
+          if-no-files-found: error

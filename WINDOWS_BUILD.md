@@ -37,6 +37,10 @@ npm run build:windows
 
 The same installer is written to the `release` folder.
 
+## Build from GitHub Actions
+
+The repository includes a Windows workflow at `.github/workflows/windows-build.yml`. It runs automatically for pushes to `main` and can also be started manually from the Actions tab. Download the `hvac-erp-windows-installer` artifact from the completed workflow run.
+
 ## Client data and backups
 
 Each installation uses its own data directory:

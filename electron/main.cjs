@@ -4,13 +4,13 @@ const path = require('node:path');
 process.env.ERP_DB_PATH = path.join(app.getPath('userData'), 'erp.db');
 process.env.ERP_BACKUP_DIR = path.join(app.getPath('userData'), 'backups');
 
-const { createApp } = require('../server/dist/app.js');
-const { initDB } = require('../server/dist/db.js');
-
 let server;
 
 const start = async () => {
   try {
+    const { createApp } = require('../server/dist/app.js');
+    const { initDB } = require('../server/dist/db.js');
+
     await initDB();
     const expressApp = createApp(false);
 
@@ -28,7 +28,16 @@ const start = async () => {
         }
       });
 
-      window.loadURL(`http://127.0.0.1:${port}`);
+      window.webContents.on('did-fail-load', (_event, errorCode, errorDescription) => {
+        dialog.showErrorBox('HVAC ERP could not load', `${errorDescription} (${errorCode})`);
+      });
+      window.loadURL(`http://127.0.0.1:${port}`).catch(error => {
+        dialog.showErrorBox('HVAC ERP could not load', error.message || String(error));
+      });
+    });
+    server.on('error', error => {
+      dialog.showErrorBox('HVAC ERP server could not start', error.message || String(error));
+      app.quit();
     });
   } catch (error) {
     console.error(error);
